@@ -13,7 +13,7 @@ provider "rafay" {
 
 resource "rafay_environment_template" "aws-et-example" {  
   metadata {
-    name    = "waas-env-template"
+    name    = "test-env"
     project = "centralpool"
   }
   spec {
@@ -21,32 +21,17 @@ resource "rafay_environment_template" "aws-et-example" {
     resources {
       type = "dynamic"
       kind = "resourcetemplate"
-      name = "res-setup-rafay-project"
+      name = "test"
       resource_options {
         version   = "v1"
         //dedicated = true
       }      
-    } 
-    resources {
-      type = "dynamic"
-      kind = "resourcetemplate"
-      name = "res-setup-rafay-prj-network-policies"
-      resource_options {
-        version   = "v1"
-        //dedicated = true
-      }
-      depends_on {
-        name = "res-setup-rafay-project"
-      }
     }        
     sharing {
-      enabled = false
+      enabled = true
       projects {
         name = "team1"
-      }
-      projects {
-        name = "team2"
-      }
-    }    
+      }      
+    }     
   }
 }
