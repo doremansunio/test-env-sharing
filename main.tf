@@ -40,6 +40,7 @@ resource "rafay_environment_template" "aws-et-example" {
       }
     }        
     sharing {
+      enabled = true
       projects {
         name = "team1"
       }
