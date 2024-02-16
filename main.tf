@@ -22,6 +22,7 @@ resource "rafay_project" "rafay_proj_new" {
 }
 
 resource "rafay_environment_template" "aws-et-example" {
+  depends_on = [ rafay_project.rafay_proj_new ]
   metadata {
     name    = "waas-env-template"
     project = "centralpool"
