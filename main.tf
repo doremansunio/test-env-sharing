@@ -4,6 +4,7 @@ terraform {
       source = "RafaySystems/rafay"
       version = "1.1.22"
     }
+  }
 }
 
 provider "rafay" {
