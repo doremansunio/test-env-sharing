@@ -33,4 +33,5 @@ resource "rafay_environment_template" "aws-et-example" {
         name = "team2"
       }
     }    
+  }
 }
