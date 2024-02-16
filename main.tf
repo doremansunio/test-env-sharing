@@ -11,6 +11,16 @@ provider "rafay" {
   # provider_config_file = "./rafay_config.json"
 }
 
+resource "rafay_project" "rafay_proj_new" {  
+  metadata {
+    name        = "t1"
+    description = "terraform project"
+  }
+  spec {
+    default = false    
+  }
+}
+
 resource "rafay_environment_template" "aws-et-example" {
   metadata {
     name    = "waas-env-template"
@@ -38,7 +48,7 @@ resource "rafay_environment_template" "aws-et-example" {
       depends_on {
         name = "res-setup-rafay-project"
       }
-    }    
+    }        
     sharing {
       projects {
         name = "team1"
