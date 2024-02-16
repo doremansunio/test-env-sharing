@@ -4,18 +4,10 @@ terraform {
       source = "RafaySystems/rafay"
       version = "1.1.22"
     }
-    github = {
-      source  = "integrations/github"
-      version = "~> 5.0"
-    }  
-  }
 }
 
 provider "rafay" {
   # provider_config_file = "./rafay_config.json"
-}
-
-provider "github" {    
 }
 
 resource "rafay_environment_template" "aws-et-example" {
@@ -25,6 +17,27 @@ resource "rafay_environment_template" "aws-et-example" {
   }
   spec {
     version = "v1"
+    resources {
+      type = "dynamic"
+      kind = "resourcetemplate"
+      name = "res-setup-rafay-project"
+      resource_options {
+        version   = "v1"
+        //dedicated = true
+      }      
+    } 
+    resources {
+      type = "dynamic"
+      kind = "resourcetemplate"
+      name = "res-setup-rafay-prj-network-policies"
+      resource_options {
+        version   = "v1"
+        //dedicated = true
+      }
+      depends_on {
+        name = "res-setup-rafay-project"
+      }
+    }    
     sharing {
       projects {
         name = "team1"
