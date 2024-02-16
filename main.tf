@@ -11,6 +11,33 @@ provider "rafay" {
   # provider_config_file = "./rafay_config.json"
 }
 
+# resource "rafay_environment_template" "aws-et-example" {  
+#   metadata {
+#     name    = "test-env"
+#     project = "centralpool"
+#   }
+#   spec {
+#     version = "v1"
+#     resources {
+#       type = "dynamic"
+#       kind = "resourcetemplate"
+#       name = "test"
+#       resource_options {
+#         version   = "v1"
+#         //dedicated = true
+#       }      
+#     }        
+#     sharing {
+#       enabled = true
+#       projects {
+#         name = "team1"
+#       }      
+#     }     
+#   }
+# }
+
+
+
 resource "rafay_environment_template" "aws-et-example" {  
   metadata {
     name    = "test-env"
@@ -23,15 +50,18 @@ resource "rafay_environment_template" "aws-et-example" {
       kind = "resourcetemplate"
       name = "test"
       resource_options {
-        version   = "v1"
-        //dedicated = true
-      }      
-    }        
+        version = "v1"
+      }
+    }
     sharing {
       enabled = true
       projects {
+        name = "defaultproject"
+      }
+      projects {
         name = "team1"
-      }      
-    }     
+      }
+    }
+    version_state = "draft"
   }
 }
