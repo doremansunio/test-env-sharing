@@ -14,7 +14,7 @@ provider "rafay" {
 resource "rafay_environment_template" "aws-et-example" {
   metadata {
     name    = "waas-env-template"
-    project = "central-pool"
+    project = "centralpool"
   }
   spec {
     version = "v1"
