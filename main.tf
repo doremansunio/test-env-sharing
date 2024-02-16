@@ -45,23 +45,26 @@ resource "rafay_environment_template" "aws-et-example" {
   }
   spec {
     version = "v1"
+
+    # resources {
+    #   type = "dynamic"
+    #   kind = "resourcetemplate"
+    #   name = "test"
+    #   resource_options {
+    #     version = "v1"
+    #   }
+    # }
     resources {
-      type = "dynamic"
-      kind = "resourcetemplate"
-      name = "test"
-      resource_options {
-        version = "v1"
-      }
+      
     }
     sharing {
       enabled = true
+
       projects {
         name = "defaultproject"
       }
-      projects {
-        name = "team1"
-      }
     }
+
     version_state = "draft"
   }
 }
