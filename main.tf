@@ -11,14 +11,26 @@ provider "rafay" {
   # provider_config_file = "./rafay_config.json"
 }
 
-resource "rafay_cluster_sharing" "demo-terraform-specific" {
-  //depends_on = [rafay_groupassociation.group-association]
-  clustername = "eks-cluster"
-  project     = "centralpool"
-  sharing {
-    all = false
-    projects {
-      name = "team1"
-    }    
+resource "rafay_environment_template" "aws-et-example" {  
+  metadata {
+    name    = "test-env-new"
+    project = "centralpool"
   }
-}
+  spec {
+    version = "v1"
+
+    resources {
+       type = "dynamic"
+       kind = "resourcetemplate"
+       name = "test"
+       resource_options {
+         version = "v1"
+       }
+    }
+    sharing {
+      enabled = true
+
+      projects {
+        name = "defaultproject"
+      }
+    }
