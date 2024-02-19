@@ -34,3 +34,8 @@ resource "rafay_environment_template" "aws-et-example" {
         name = "defaultproject"
       }
     }
+
+    version_state = "draft"
+  }
+}
+
