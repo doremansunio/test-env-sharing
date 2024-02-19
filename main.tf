@@ -12,7 +12,7 @@ provider "rafay" {
 }
 
 resource "rafay_cluster_sharing" "demo-terraform-specific" {
-  depends_on = [rafay_groupassociation.group-association]
+  //depends_on = [rafay_groupassociation.group-association]
   clustername = "eks-cluster"
   project     = "centralpool"
   sharing {
