@@ -17,7 +17,7 @@ resource "rafay_cluster_sharing" "demo-terraform-specific" {
   sharing {
     all = false
     projects {
-      name = "team3"
+      name = "ws1"
     }    
   }
 }
