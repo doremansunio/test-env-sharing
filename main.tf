@@ -30,8 +30,22 @@ resource "rafay_environment_template" "aws-et-example" {
   }
   spec {
     version = "v1"
+
     resources {
+      type = "dynamic"
+      kind = "resourcetemplate"
+      name = "res-test"
+
+      resourceOptions {
+        version = "v1"
+      }
     }
+
+    contexts {
+      name = "rafay-config-context"
+    }
+
+    versionState = "draft"
     sharing {
       enabled = true
 
