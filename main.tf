@@ -36,7 +36,7 @@ resource "rafay_environment_template" "aws-et-example" {
       kind = "resourcetemplate"
       name = "res-test"
 
-      resourceOptions {
+      resourceoptions {
         version = "v1"
       }
     }
