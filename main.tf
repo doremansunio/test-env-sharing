@@ -44,8 +44,7 @@ resource "rafay_environment_template" "aws-et-example" {
     contexts {
       name = "rafay-config-context"
     }
-
-    versionState = "draft"
+    
     sharing {
       enabled = true
 
