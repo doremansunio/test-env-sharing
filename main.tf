@@ -30,6 +30,8 @@ resource "rafay_environment_template" "aws-et-example" {
   }
   spec {
     version = "v1"
+    resources {
+    }
     sharing {
       enabled = true
 
