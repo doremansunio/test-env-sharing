@@ -11,46 +11,18 @@ provider "rafay" {
   # provider_config_file = "./rafay_config.json"
 }
 
-# resource "rafay_cluster_sharing" "demo-terraform-specific" {  
-#   clustername = "eks-cluster"
-#   project     = "central-pool"
-#   sharing {
-#     all = false
-#     projects {
-#       name = "defaultproject"
-#     }    
-#   }
-# }
+# Create new Rafay workspace group
+resource "rafay_group" "group-Workspace" {  
+  name        = "WrkspAdmin-grp-${var.project_name}"
+  description = "Workspace Admin Group for ${var.project_name}"  
+}
 
-
-resource "rafay_environment_template" "aws-et-example" {  
-  metadata {
-    name    = "naas-envir-template"
-    project = "centralpool"
-  }
-  spec {
-    version = "v1"
-
-    resources {
-      type = "dynamic"
-      kind = "resourcetemplate"
-      name = "res-test"
-
-      resource_options {
-        version = "v1"
-      }
-    }
-
-    contexts {
-      name = "rafay-config-context"
-    }
-    
-    sharing {
-      enabled = true
-
-      projects {
-        name = "defaultproject"
-      }
-    }
-  }
+# Creare new group assocication
+resource "rafay_groupassociation" "group-association" {
+  depends_on = [rafay_group.group-Workspace]
+  group      = "WrkspAdmin-grp-${var.project_name}"
+  project    = var.project_name
+  roles = ["WORKSPACE_ADMIN","ENVIRONMENT_TEMPLATE_USER"]
+  # add_users = ["${var.workspace_admins}"]
+  add_users = var.workspace_admins
 }
