@@ -27,7 +27,7 @@ provider "rafay" {
 #   add_users = var.workspace_admins
 # }
 
-resource  "rafay_cluster_sharing" "this"{
+data  "rafay_cluster_sharing" "this"{
   clustername = "eks-cluster"
   project     = "centralpool"
 }
