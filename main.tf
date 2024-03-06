@@ -28,10 +28,8 @@ provider "rafay" {
 # }
 
 resource  "rafay_cluster_sharing" "this"{
-    filter {
-        name = "clustername"
-        value = "eks-cluster"
-    }
+  clustername = "eks-cluster"
+  project     = "centralpool"
 }
 
 resource "rafay_cluster_sharing" "demo-terraform-specific" {  
