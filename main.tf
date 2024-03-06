@@ -27,6 +27,13 @@ provider "rafay" {
 #   add_users = var.workspace_admins
 # }
 
+data "rafay_cluster_sharing" "this"{
+    filter {
+        name = "clustername"
+        value = "eks-cluster"
+    }
+}
+
 resource "rafay_cluster_sharing" "demo-terraform-specific" {  
   clustername = "eks-cluster"
   project     = "centralpool"
