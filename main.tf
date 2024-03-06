@@ -28,15 +28,14 @@ provider "rafay" {
 # }
 
 resource "rafay_cluster_sharing" "demo-terraform-specific" {  
-  clustername = "eks-cluster"
+  clustername = "team1"
   project     = "centralpool"
 
   for_each = toset(var.workspace_admins)
     sharing {
         all = false
-    
         projects {
-        name = each.value
-        }
+            name = each.value
+        }    
     }
 }
