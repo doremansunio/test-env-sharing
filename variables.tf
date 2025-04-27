@@ -5,3 +5,7 @@ variable "project_name" {
 variable "workspace_admins" {
   type    = list  
 }
+
+variable "admin_"name" {
+  type    = string  
+}
